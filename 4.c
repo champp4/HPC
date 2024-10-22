@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
- #include <omp.h> // Uncomment this line if you want to use OpenMP
+ #include <omp.h> 
 
 int main() {
     int n;
@@ -10,7 +10,7 @@ int main() {
     
     if (n < 2) {
         printf("Please enter a value greater than or equal to 2.\n");
-        return 1; // Exit if n is less than 2
+        return 1; 
     }
 
     int* a = (int*)malloc(n * sizeof(int));
@@ -20,7 +20,6 @@ int main() {
     clock_t st, et;
     st = clock();
 
-   // Uncomment for parallel Fibonacci calculation using OpenMP
     #pragma omp parallel
     {
         #pragma omp for
@@ -43,6 +42,6 @@ int main() {
     et = clock();
     printf("Time Taken: %lf ms\n", ((double)(et - st) * 1000 / CLOCKS_PER_SEC));
 
-    free(a); // Free allocated memory
+    free(a); 
     return 0;
 }
