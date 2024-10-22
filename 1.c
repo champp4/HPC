@@ -13,26 +13,22 @@ int main() {
     printf("Enter matrix A:\n");
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            scanf("%d", &A[i][j]);  // Input matrix A
-           // A[i][j]=rand()%100;
+            scanf("%d", &A[i][j]);
         }
     }
 
     printf("Enter vector x:\n");
     for (int i = 0; i < n; i++) {
-        scanf("%d", &x[i]);  // Input vector x
-        y[i] = 0;  // Initialize y[i] to 0
-       // x[i]=rand()%100;
+        scanf("%d", &x[i]);
+        y[i] = 0;
     }
 
-    // Serial or Parallel computation
     clock_t start = clock();
 
-    // Uncomment this line for parallel execution
     #pragma omp parallel for
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            y[i] += A[i][j] * x[j];  // Matrix-vector multiplication
+            y[i] += A[i][j] * x[j];
         }
     }
 
@@ -45,7 +41,6 @@ int main() {
     }
     printf("\n");
 
-    // Output the execution time
     printf("Execution time: %f seconds\n", time_taken);
 
     return 0;
